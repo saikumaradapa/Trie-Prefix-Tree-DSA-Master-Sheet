@@ -8,8 +8,8 @@ class TrieNode:
     def containKey(self, ch):
         return self.children[ord(ch)-ord('a')] != None
 
-    def put(self, ch, children):
-        self.children[ord(ch)-ord('a')] = children
+    def put(self, ch, node):
+        self.children[ord(ch)-ord('a')] = node
 
     def get(self, ch):
         return self.children[ord(ch)-ord('a')]
