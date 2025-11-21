@@ -5,7 +5,7 @@ class TrieNode:
         self.children = [None] * 26
         self.endsWith = False
 
-    def containKey(self, ch):
+    def containsKey(self, ch):
         return self.children[ord(ch)-ord('a')] != None
 
     def put(self, ch, node):
@@ -27,7 +27,7 @@ class Trie:
     def insert(self, word):
         curr = self.root
         for ch in word:
-            if curr.containKey(ch) == False:
+            if curr.containsKey(ch) == False:
                 curr.put(ch, TrieNode())
             curr = curr.get(ch)
         curr.setEnd()
@@ -35,7 +35,7 @@ class Trie:
     def search(self, word):
         curr = self.root
         for ch in word:
-            if not curr.containKey(ch):
+            if not curr.containsKey(ch):
                 return False 
             curr = curr.get(ch)
         return curr.isEnd()
@@ -43,7 +43,7 @@ class Trie:
     def startsWith(self, prefix):
         curr = self.root
         for ch in prefix:
-            if not curr.containKey(ch):
+            if not curr.containsKey(ch):
                 return False 
             curr = curr.get(ch)
         return True  
@@ -61,7 +61,7 @@ class TrieNode:
         self.children = {}
         self.endsWith = False
 
-    def containKey(self, ch):
+    def containsKey(self, ch):
         return ch in self.children
 
     def put(self, ch, children):
